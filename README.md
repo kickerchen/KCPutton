@@ -1,5 +1,3 @@
 # Putton
 
-By using UIViewControllerTransitioningDelegate
-
-This sample Swift project creates a custom transition animation to replace the default animation of presentViewController(_: animated:completion:).
+This sample Swift project creates a custom UIButton which pops out sub-buttons once pressed.
