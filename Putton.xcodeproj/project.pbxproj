@@ -13,6 +13,8 @@
 		7991B8081B5F489F00379D22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7991B8071B5F489F00379D22 /* Images.xcassets */; };
 		7991B80B1B5F489F00379D22 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7991B8091B5F489F00379D22 /* LaunchScreen.xib */; };
 		7991B8171B5F489F00379D22 /* PuttonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991B8161B5F489F00379D22 /* PuttonTests.swift */; };
+		7991B8211B5F48C200379D22 /* Putton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991B8201B5F48C200379D22 /* Putton.swift */; };
+		7991B8231B5F4AE300379D22 /* PuttonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991B8221B5F4AE300379D22 /* PuttonItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		7991B8101B5F489F00379D22 /* PuttonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PuttonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7991B8151B5F489F00379D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7991B8161B5F489F00379D22 /* PuttonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuttonTests.swift; sourceTree = "<group>"; };
+		7991B8201B5F48C200379D22 /* Putton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Putton.swift; sourceTree = "<group>"; };
+		7991B8221B5F4AE300379D22 /* PuttonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuttonItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 				7991B8001B5F489F00379D22 /* AppDelegate.swift */,
 				7991B8021B5F489F00379D22 /* ViewController.swift */,
 				7991B8041B5F489F00379D22 /* Main.storyboard */,
+				7991B8201B5F48C200379D22 /* Putton.swift */,
+				7991B8221B5F4AE300379D22 /* PuttonItem.swift */,
 				7991B8071B5F489F00379D22 /* Images.xcassets */,
 				7991B8091B5F489F00379D22 /* LaunchScreen.xib */,
 				7991B7FE1B5F489F00379D22 /* Supporting Files */,
@@ -212,6 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7991B8231B5F4AE300379D22 /* PuttonItem.swift in Sources */,
+				7991B8211B5F48C200379D22 /* Putton.swift in Sources */,
 				7991B8031B5F489F00379D22 /* ViewController.swift in Sources */,
 				7991B8011B5F489F00379D22 /* AppDelegate.swift in Sources */,
 			);
@@ -411,6 +419,7 @@
 				7991B81C1B5F489F00379D22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7991B81D1B5F489F00379D22 /* Build configuration list for PBXNativeTarget "PuttonTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +428,7 @@
 				7991B81F1B5F489F00379D22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
