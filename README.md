@@ -11,3 +11,6 @@ This sample Swift project creates a custom UIButton which pops out sub-buttons o
 
 ![ScreenShot3](https://cloud.githubusercontent.com/assets/2072087/8871208/2e7c2e38-3226-11e5-8141-37b9bc5ff445.png)
 ![ScreenShot4](https://cloud.githubusercontent.com/assets/2072087/8871209/2f268de2-3226-11e5-8e70-a7e1e0fdfa76.png)
+
+# Todo:
+- Support Cocoapods.
