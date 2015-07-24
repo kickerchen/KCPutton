@@ -30,7 +30,6 @@ class Putton: UIButton, PuttonItemDelegate {
     var expandRadius: CGFloat!
     var timer: NSTimer!
     var isAnimating = false
-    var animatingIndex: Int = 0
     var isExpand = false {
         didSet {
             
@@ -40,7 +39,7 @@ class Putton: UIButton, PuttonItemDelegate {
                 let selector = (self.isExpand) ? Selector("expandPuttonItems") : Selector("closePuttonItems")
                 
                 // Adding timer to runloop to make sure UI event won't block the timer from firing
-                timer = NSTimer(timeInterval: PuttonConstants.defaultTimerInterval, target: self, selector: selector, userInfo: nil, repeats: true)
+                timer = NSTimer(timeInterval: PuttonConstants.defaultTimerInterval, target: self, selector: selector, userInfo: nil, repeats: false)
                 NSRunLoop.currentRunLoop().addTimer(self.timer, forMode: NSRunLoopCommonModes)
                 
                 self.isAnimating = true
@@ -187,28 +186,22 @@ class Putton: UIButton, PuttonItemDelegate {
     
     func expandPuttonItems() {
         
-        let item = self.expandItems[self.animatingIndex] as! PuttonItem
-        self.animatingIndex++;
-        
-        UIView.animateWithDuration(PuttonConstants.defaultAnimationDuration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.allZeros, animations: {
-            
-            item.transform = CGAffineTransformMakeRotation(CGFloat(PuttonConstants.defaultExpandRotation))
-            item.center = item.expandPoint
-            
-            }, completion: nil)
-        
-        if self.animatingIndex >= self.expandItems.count {
-            self.isAnimating = false
-            self.timer.invalidate()
-            self.timer = nil
-            self.animatingIndex = 0
+        for (var i = 0; i < self.expandItems.count; i++) {
+            let item = self.expandItems[i] as! PuttonItem
+            UIView.animateWithDuration(PuttonConstants.defaultAnimationDuration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.allZeros, animations: {
+                
+                item.transform = CGAffineTransformMakeRotation(CGFloat(PuttonConstants.defaultExpandRotation))
+                item.center = item.expandPoint
+                
+                }, completion: nil)
         }
+        
+        self.isAnimating = false
+        self.timer.invalidate()
+        self.timer = nil
     }
     
     func closePuttonItems() {
-        
-        let item = self.expandItems[self.animatingIndex] as! PuttonItem
-        self.animatingIndex++;
         
         let rotateAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
         rotateAnimation.values = [NSNumber(double: 0.0), NSNumber(double: PuttonConstants.defaultCloseRotation), NSNumber(double: 0.0)]
@@ -216,17 +209,18 @@ class Putton: UIButton, PuttonItemDelegate {
         rotateAnimation.keyTimes = [NSNumber(float: 0.0), NSNumber(float: 0.4), NSNumber(float: 0.5)]
         rotateAnimation.fillMode = kCAFillModeForwards
         rotateAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-        item.layer.addAnimation(rotateAnimation, forKey: "Close")
         
-        UIView.animateWithDuration(PuttonConstants.defaultAnimationDuration, animations: {
-            item.center = self.startButton.center
-        })
-        
-        if self.animatingIndex >= self.expandItems.count {
-            self.isAnimating = false
-            self.timer.invalidate()
-            self.timer = nil
-            self.animatingIndex = 0
+        for (var i = 0; i < self.expandItems.count; i++) {
+            let item = self.expandItems[i] as! PuttonItem
+            item.layer.addAnimation(rotateAnimation, forKey: "Close")
+            
+            UIView.animateWithDuration(PuttonConstants.defaultAnimationDuration, animations: {
+                item.center = self.startButton.center
+            })
         }
+
+        self.isAnimating = false
+        self.timer.invalidate()
+        self.timer = nil
     }
 }
