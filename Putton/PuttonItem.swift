@@ -32,6 +32,7 @@ class PuttonItem: UIButton, NSCopying {
         self.init(frame: CGRectMake(0, 0, image.size.width, image.size.height))
         
         setImage(image, forState: .Normal)
+        setImage(image, forState: .Highlighted)
     }
     
     func copyWithZone(zone: NSZone) -> AnyObject {
@@ -56,6 +57,8 @@ class PuttonItem: UIButton, NSCopying {
 
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         
+        super.touchesBegan(touches, withEvent: event)
+        
         // pop animation
         self.transform = CGAffineTransformMakeScale(0.8, 0.8)
         UIView.animateWithDuration(PuttonConstants.startButtonDefaultAnimationDuration, delay: 0.0, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.allZeros, animations: {
@@ -68,7 +71,8 @@ class PuttonItem: UIButton, NSCopying {
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-
+        super.touchesEnded(touches, withEvent: event)
+        
         self.delegate?.puttonItemTouchesEnded(self)
     }
 }

@@ -57,7 +57,7 @@ class Putton: UIButton, PuttonItemDelegate {
         super.init(frame: frame)
     }
     
-    convenience init(frame: CGRect, startItem: PuttonItem, expandItem: PuttonItem, itemCount: Int) {
+    convenience init(frame: CGRect, startItem: PuttonItem, expandItems: NSArray) {
     
         self.init(frame: frame)
      
@@ -71,11 +71,7 @@ class Putton: UIButton, PuttonItemDelegate {
         self.addSubview(self.startButton)
         
         // set expand items
-        let items = NSMutableArray()
-        for _ in 1...itemCount {
-            items.addObject(expandItem.copy())
-        }
-        self.expandItems = items
+        self.expandItems = expandItems
         self.setExpandItems() // didSet is not called in initializer
     }
     
@@ -119,6 +115,8 @@ class Putton: UIButton, PuttonItemDelegate {
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 
+        super.touchesBegan(touches, withEvent: event)
+        
         self.isExpand = !self.isExpand
     }
     
